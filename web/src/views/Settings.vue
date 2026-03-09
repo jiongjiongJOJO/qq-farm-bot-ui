@@ -143,7 +143,7 @@ const stealCropOptions = computed<StealCropOption[]>(() => {
     const level = Number.isFinite(requiredLevel) && requiredLevel >= 0 ? requiredLevel : null
     const next: StealCropOption = {
       plantId,
-      name: String(seed?.name || ('作物#' + plantId)),
+      name: String(seed?.name || (`作物#${plantId}`)),
       level,
       image: String(seed?.image || seed?.seedImage || '').trim(),
     }
@@ -715,7 +715,7 @@ async function handleTestOffline() {
                 </div>
               </div>
 
-              <div v-if="stealCropOptions.length > 0" class="max-h-56 grid grid-cols-1 gap-2 overflow-y-auto pr-1 md:grid-cols-2">
+              <div v-if="stealCropOptions.length > 0" class="grid grid-cols-1 max-h-56 gap-2 overflow-y-auto pr-1 md:grid-cols-2">
                 <label
                   v-for="crop in stealCropOptions"
                   :key="crop.plantId"
@@ -739,7 +739,7 @@ async function handleTestOffline() {
                   <div class="min-w-0 flex-1">
                     <div class="truncate text-xs">{{ crop.name }}</div>
                     <div class="text-[11px] text-gray-500 dark:text-gray-400">
-                      {{ crop.level === null ? 'Lv.?' : ('Lv.' + crop.level) }} (#{{ crop.plantId }})
+                      {{ crop.level === null ? 'Lv.?' : (`Lv.${crop.level}`) }} (#{{ crop.plantId }})
                     </div>
                   </div>
                 </label>
