@@ -206,7 +206,7 @@ function normalizeRuntimeClientVersion(input, fallback = DEFAULT_RUNTIME_CLIENT.
     const raw = String(input || '').trim();
     if (!raw) return fallback;
     if (raw.length > 64) return fallback;
-    if (!/^[A-Za-z0-9._-]+$/.test(raw)) return fallback;
+    if (!/^[\w.-]+$/.test(raw)) return fallback;
     return raw;
 }
 
@@ -214,7 +214,7 @@ function normalizeRuntimeClientOs(input, fallback = DEFAULT_RUNTIME_CLIENT.os) {
     const raw = String(input || '').trim();
     if (!raw) return fallback;
     if (raw.length > 16) return fallback;
-    if (!/^[A-Za-z0-9._-]+$/.test(raw)) return fallback;
+    if (!/^[\w.-]+$/.test(raw)) return fallback;
     return raw;
 }
 
